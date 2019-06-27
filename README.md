@@ -1,7 +1,8 @@
 ## 优化和更新版本
-*更新hadoop版本到3.2.0
-*增加build和run的脚本
-*修改部分代码，使之能够正常运行
+
+* 更新hadoop版本到3.2.0
+* 增加build和run的脚本
+* 修改部分代码，使之能够正常运行
 
 ## Hadoop Map-Reduce Example in Java
 
