@@ -26,7 +26,7 @@ public class App
         }
 
         // Create the job specification object
-        Job job = new Job();
+        Job job = Job.getInstance();
         job.setJarByClass(App.class);
         job.setJobName("Earthquake Measurment");
 
@@ -35,8 +35,6 @@ public class App
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         // Set the Mapper and Reducer classes
-        job.setJarByClass(EarthquakeMapper.class);
-        job.setJarByClass(EarthquakeReducer.class);
         job.setMapperClass(EarthquakeMapper.class);
         job.setReducerClass(EarthquakeReducer.class);
 
