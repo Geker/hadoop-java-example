@@ -42,7 +42,7 @@ The raw data files are in the `input/` folder.
 ### Instructions for Running the Sample
 1. Clone the project:
 
-	    $ git clone git@github.com:umermansoor/hadoop-java-example.git
+	    $ git clone https://github.com/Geker/hadoop-java-example.git
 	
 2. Change to the project directory:
 
@@ -57,7 +57,12 @@ The raw data files are in the `input/` folder.
 	    $ export HADOOP_CLASSPATH=target/classes/
 
 5. Run the sample. The `output` directory shouldn't exists otherwise this will fail.
-
+        --create the hdfs directory
+	$ hadoop fs -mkdir -p /user/hadoop/input
+	--upload the input files
+	$ hadoop fs -put input/input_1.csv  /user/hadoop/input
+	$ hadoop fs -put input/input.csv  /user/hadoop/input
+	--run the programs
         $ hadoop com.umermansoor.App input/ output
 
 > Note: the output will go to the `output/` folder which Hadoop will create when run. The output will be in a file called `part-r-00000`.
