@@ -8,11 +8,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 /**
- * The main application class. 
- * 
+ * The main application class.
+ *
  * @author Umer Mansoor
  */
-public class App 
+public class App
 {
     /**
      * Application entry point.
@@ -35,6 +35,8 @@ public class App
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         // Set the Mapper and Reducer classes
+        job.setJarByClass(EarthquakeMapper.class);
+        job.setJarByClass(EarthquakeReducer.class);
         job.setMapperClass(EarthquakeMapper.class);
         job.setReducerClass(EarthquakeReducer.class);
 
