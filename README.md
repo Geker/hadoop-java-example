@@ -1,7 +1,7 @@
 ## 优化和更新版本
 
 * 更新hadoop版本到3.2.0
-* 增加build和run的脚本
+* 增加build和runme的脚本
 * 修改部分代码，使之能够正常运行
 
 ## Hadoop Map-Reduce Example in Java
@@ -20,30 +20,9 @@ The fields in bold are magnitude of the quake and name of region where the readi
 The raw data files are in the `input/` folder.
 
 ### Instructions for Setting Up Hadoop
-1. Download Hadoop 1.1.1 binary. [Mirror](http://mirror.csclub.uwaterloo.ca/apache/hadoop/common/hadoop-1.1.1/hadoop-1.1.1.tar.gz)
+1. see   [Hadoop install document](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html)
 
 
-2. Extract it to a folder on your computer:
-
-        $ tar xvfz hadoop-1.1.1.tar.gz
-
-3. Setup JAVA_HOME environment variable to point to the directory where Java is installed. For my Mac OS X, I did the following:
-
-        $ export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
-
- Note: If you are running Lion, you may want to update the JAVA_HOME to point to `java_home` command which outputs Java's home directory, that is,
-
-        $ export JAVA_HOME=$(/usr/libexec/java_home)
-
-4. Setup HADOOP_INSTALL environment variable to point the directory where you extracted hadoop binary in step 2:
-
-        $ export HADOOP_INSTALL=/Users/umermansoor/Documents/hadoop-1.1.1
-
-5. Edit the PATH environment variable:
-
-        $ export PATH=$PATH:$HADOOP_INSTALL/bin
-
-> Or you can add these variables to your standard shell script. For example, checkout my Mac OSX's [`~/.bash_profile`](https://gist.github.com/4525814)
 
 ### Instructions for Running the Sample
 1. Clone the project:
@@ -73,8 +52,15 @@ The raw data files are in the `input/` folder.
 
         ```注意  增加-libjar参数，方便运行调试
         $ hadoop  jar  target/hadoopex-1.0-SNAPSHOT.jar     com.umermansoor.App     -libjars  target/hadoopex-1.0-SNAPSHOT.jar    input   output
+        
+        > Note: the output will go to the `output/` folder which Hadoop will create when run. The output will be in a file called `part-r-00000`.
 
-> Note: the output will go to the `output/` folder which Hadoop will create when run. The output will be in a file called `part-r-00000`.
+
+
+ 
+ >**you can also use the build.sh and runme.sh to build and run the exmaples***
+
+
 
 ### Common Errors:
 1. Exception: java.lang.NoClassDefFoundError
