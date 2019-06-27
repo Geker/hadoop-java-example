@@ -1,5 +1,6 @@
 package com.umermansoor;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
@@ -20,19 +21,21 @@ public class App
      * @throws Exception - Bad idea but produces less cluttered code.
      */
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
+        if (args.length < 2) {
             System.err.println("Usage: hadoopex <input path> <output path>");
             System.exit(-1);
         }
 
-        // Create the job specification object
-        Job job = Job.getInstance();
+        Configuration conf=new Configuration();
+		// Create the job specification object
+        Job job = Job.getInstance(conf);
         job.setJarByClass(App.class);
         job.setJobName("Earthquake Measurment");
 
         // Setup input and output paths
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        int len=args.length;
+        FileInputFormat.addInputPath(job, new Path(args[len-2]));
+        FileOutputFormat.setOutputPath(job, new Path(args[len-1]));
 
         // Set the Mapper and Reducer classes
         job.setMapperClass(EarthquakeMapper.class);
